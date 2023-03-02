@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for index in {1..10}
+for ((index = 1; index <= 10; index++))
 do
     echo "Best School"
 done
