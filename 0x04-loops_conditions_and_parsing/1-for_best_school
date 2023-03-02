@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# A simple For Loop that echo "Best School" 10 times
 for ((index = 1; index <= 10; index++))
 do
     echo "Best School"
