@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# netstat command to list all TCP listening sockets
+# -t option shows only TCP connections
+# -l option shows only listening sockets
+# -n option shows IP addresses and port numbers instead of names
+# -p option shows the PID and name of the program to which each socket belongs
+
+netstat | grep LISTEN
