@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 # check if an IP address is provided as an argument
-# ping the IP address 5 times
-ping -c 5 "$1"
+
+if [ $# -gt 0 ]; then
+    # ping the IP address 5 times
+    ping -c 5 "$1"
+    exit 1
+fi
