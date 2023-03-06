@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Loop through and print Best School and Hi for 9th iteration
+counter=1
+
+while [ $counter -le 10 ]; do
+    echo "Best School"
+    if [[ $counter -eq 9 ]]; then
+        echo "Hi"
+    fi
+    ((counter++))
+done
