@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Echo everything after the delimeter sign in the current directory
 ls >dir
-for dir in *; do
-    [[ $dir =~ "-"(.*) ]] && echo "${BASH_REMATCH[1]}"
+for file in *; do
+    name=${file#*-}
+    echo "$name"
 done
