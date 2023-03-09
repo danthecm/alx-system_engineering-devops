@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Loops from 1 to 20 and echo something to the terminal
-index=0
+index=1
 
 while [ $index -le 20 ]; do
+    echo $index
     case $index in
     4)
         echo "bad luck from China"
@@ -14,10 +15,6 @@ while [ $index -le 20 ]; do
 
     17)
         echo "bad luck from Italy"
-        ;;
-
-    *)
-        echo $index
         ;;
     esac
     ((index++))
