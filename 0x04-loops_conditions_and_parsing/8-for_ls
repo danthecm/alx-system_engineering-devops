@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Echo everything after the delimeter sign in the current directory
-ls >file
 for file in *; do
     name=${file#*-}
     echo "$name"
