@@ -1,4 +1,5 @@
-file { '/home/ubuntu/.ssh/config':
+# Setup ssh config using puppet
+file { ''/etc/ssh/ssh_config':
   ensure => present,
   owner  => 'ubuntu',
   group  => 'ubuntu',
