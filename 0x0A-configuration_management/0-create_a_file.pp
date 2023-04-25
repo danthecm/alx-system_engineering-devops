@@ -1,7 +1,7 @@
 # Creates a new file
 
 file { '/tmp/school':
-  ensure  => file,
+  ensure  => 'file',
   path    => 'tmp/school',
   content => 'I love Puppet',
   mode    => '0744',
