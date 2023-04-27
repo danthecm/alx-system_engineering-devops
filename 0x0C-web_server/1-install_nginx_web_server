@@ -1,36 +1,7 @@
 #!/usr/bin/env bash
 # A bash script that installs nginx and setup a simple Hello world page
-sudo apt-get update
-sudo apt-get -y upgrade
-
-# Install nginx package
-sudo apt-get -y install nginx
-
-# Configure nginx
-sudo echo "server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        root ~/example-website;
-        index index.html index.htm index.nginx-debian.html;
-        server_name _;
-        location / {
-                try_files \$uri \$uri/ =404;
-        }
-}" >/etc/nginx/sites-available/default
-
-# Create the document root directory
-mkdir -p ~/example-website
-
-# Create the index.html file
-echo "<html>
-  <head>
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
-</html>" >~/example-index.html
-
-# Restart nginx service
-sudo killall nginx
-sudo /usr/sbin/nginx
+apt update 
+apt upgrade -y
+apt install -y nginx
+echo "Hello World!" >/var/www/html/index.html
+service nginx restart
