@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# A bash script that installs nginx and setup a simple Hello world page
 apt-get update
 apt-get -y upgrade
 
