@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+apt-get update
+apt-get -y upgrade
+
+# Install nginx package
+apt-get -y install nginx
+
+# Configure nginx
+echo "server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root ~/example-website;
+        index index.html index.htm index.nginx-debian.html;
+        server_name _;
+        location / {
+                try_files \$uri \$uri/ =404;
+        }
+}" >/etc/nginx/sites-available/default
+
+# Create the document root directory
+mkdir -p ~/example-website
+
+# Create the index.html file
+echo "<html>
+  <head>
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+  </body>
+</html>" >~/example-index.html
+
+# Restart nginx service
+killall nginx
+/usr/sbin/nginx
