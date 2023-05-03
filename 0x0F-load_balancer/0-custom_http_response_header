@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Update package repositories and install Nginx
-sudo apt update && sudo apt upgrade
-sudo apt install nginx
+sudo apt-get -y update && sudo apt-get -y upgrade
+sudo apt-get -y install nginx
 
 # Define the custom header in Nginx configuration
 sudo sed -i '/http {/a add_header X-Served-By $hostname;' /etc/nginx/nginx.conf
