@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
 # MySQL Backup Script for all databases
-mysqldump -u root -p "$1" --all-databases >backup.sql
-tar -czvf "$(date +'%d-%m-%Y').tar.gz" backup.sql
+current_date=$(date +'%d-%m-%Y')
+
+# Define the file names
+dump_file="backup.sql"
+archive_file="${current_date}.tar.gz"
+
+# MySQL dump command
+mysqldump --all-databases -u root -p"$1" >"$dump_file"
+
+# Compress the dump file into a tar.gz archive
+tar -czvf "$archive_file" "$dump_file"
