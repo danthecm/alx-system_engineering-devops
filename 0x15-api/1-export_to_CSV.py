@@ -8,9 +8,9 @@ exports the result to a csv file
 Args:
 employee_id: The id of the employee to retrieve
 """
+import csv
 import requests
 import sys
-import csv
 
 if __name__ == '__main__':
     employee_id = sys.argv[1]
@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     employee = employee_request.json()
 
-    name = employee.get("name")
+    username = employee.get("username")
 
     tasks_request = requests.get(f"{base_url}todos?userId={employee_id}")
 
@@ -32,8 +32,8 @@ if __name__ == '__main__':
     for task in all_tasks:
         is_completed = task.get('completed')
         title = task.get('title')
-        data.append([employee_id,
-                     name, is_completed, title])
+        data.append([str(employee_id),
+                     username, str(is_completed), title])
 
     with open("{}.csv".format(employee_id), "w") as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
