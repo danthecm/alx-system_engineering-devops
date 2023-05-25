@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-"""A simple module that makes request to an api"""
+"""
+A simple module that makes request to an api
+to retrieve user information and todos from
+the api and prints the user name and completed/total tasks
+
+Args:
+employee_id: The id of the employee to retrieve
+"""
 import requests
 import sys
 
@@ -15,7 +22,7 @@ tasks_request = requests.get(f"{base_url}todos?userId={employee_id}")
 
 all_tasks = tasks_request.json()
 
-completed = list(filter(lambda x: x.get("completed") == True, all_tasks))
+completed = list(filter(lambda x: x.get("completed"), all_tasks))
 
 print(
     f"Employee {employee.get('name')} \
