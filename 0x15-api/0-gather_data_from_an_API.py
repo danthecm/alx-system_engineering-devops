@@ -19,14 +19,15 @@ if __name__ == '__main__':
 
     employee = employee_request.json()
 
+    name = employee.get("name")
+
     tasks_request = requests.get(f"{base_url}todos?userId={employee_id}")
 
     all_tasks = tasks_request.json()
 
     completed = list(filter(lambda x: x.get("completed"), all_tasks))
 
-    print(
-        f"Employee {employee.get('name')} \
-    is done with tasks({len(completed)}/{len(all_tasks)}):")
+    print("Employee {} is done with tasks({}/{}):".format(name,
+          len(completed), len(all_tasks)))
     for todo in completed:
         print(f"\t {todo.get('title')}")
