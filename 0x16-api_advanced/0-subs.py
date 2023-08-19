@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Module containing a function to get number of subscribes"""
 import requests
 
