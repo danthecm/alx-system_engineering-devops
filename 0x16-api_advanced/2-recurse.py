@@ -4,6 +4,7 @@ Modue that contains a function recurse that recursively calls
 Reeddit Api for titles
 '''
 import requests
+import sys
 
 
 def recurse(subreddit, hot_list=[], next_page=None, count=0):
