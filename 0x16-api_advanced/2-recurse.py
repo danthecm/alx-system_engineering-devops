@@ -1,41 +1,28 @@
 #!/usr/bin/python3
-'''
-Modue that contains a function recurse that recursively calls
-Reeddit Api for titles
-'''
+""" Subreddit recurse."""
+
 import requests
-import sys
 
 
-def recurse(subreddit, hot_list=[], next_page=None, count=0):
-    '''
-    Queries Reddit Api for recursively for titles
+def recurse(subreddit, hot_list=[], after=''):
+    """
+    Get the Number of subcribers in a subreddit.
+
     Args:
-        subreddit(str) - The name of the subreddit to check
-        hot_list - List to append
-        next_page - Page to be passed in parameter
-        count - Counter
-    '''
-    user_agent = 'DellServer22.04'
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    # if page specified, pass as parameter
-    if next_page:
-        url += '?after={}'.format(next_page)
-    headers = {'User-Agent': user_agent}
-
-    r = requests.get(url, headers=headers, allow_redirects=False)
-
-    if r.status_code != 200:
-        return None
-
-    data = r.json()['data']
-    posts = data['children']
-    for post in posts:
-        count += 1
-        hot_list.append(post['data']['title'])
-
-    next_page = data['after']
-    if next_page is not None:
-        return recurse(subreddit, hot_list, next_page, count)
+        subreddit (str): the subreddit to get the info of
+    """
+    if after is None:
+        return
+    url = "https://www.reddit.com/r/{:s}/hot.json?after={:s}&limit=100".format(
+        subreddit, after)
+    response = requests.get(url,
+                            allow_redirects=False,
+                            headers={'User-Agent': 'Mozilla/5.0'})
+    if response.status_code == 200:
+        data = response.json()
+        after = data.get('data').get('after')
+        hot_list.extend(data.get('data').get('children'))
+        recurse(subreddit, hot_list, after)
     else:
-        return hot_list
+        return None
+    return hot_list
