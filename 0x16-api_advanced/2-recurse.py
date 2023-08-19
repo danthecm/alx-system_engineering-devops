@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''
-Modue that contains a function recurse that recursively calls Reeddit Api for titles
+Modue that contains a function recurse that recursively calls
+Reeddit Api for titles
 '''
 import requests
 
@@ -14,7 +15,7 @@ def recurse(subreddit, hot_list=[], next_page=None, count=0):
         next_page - Page to be passed in parameter
         count - Counter
     '''
-    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+    user_agent = 'DellServer22.04'
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     # if page specified, pass as parameter
     if next_page:
